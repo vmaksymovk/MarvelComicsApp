@@ -14,18 +14,18 @@ struct ContentView: View {
         TabView(selection: $isSelectedView) {
             ListView()
                 .tabItem {
-                    Label("", systemImage: "house")
-                       
+                    Image(systemName: "house")
                 }
                 .tag(1)
             
             SearchBarView()
                 .tabItem {
-                    Label("", systemImage: "magnifyingglass")
+                    Image(systemName: "magnifyingglass")
                         
                 }
                 .tag(2)
         }
+        .accentColor(.red)
     }
 }
 
