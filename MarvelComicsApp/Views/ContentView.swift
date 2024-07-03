@@ -9,19 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = ComicsViewModel()
-
+    
     var body: some View {
         NavigationView {
-            List(viewModel.comics) { comic in
-                ComicRowView(comic: comic)
-            }
-            .navigationTitle("Marvel Comics")
-            .searchable(text: $viewModel.searchText)
-            .onAppear {
-                viewModel.fetchComics()
-            }
-            .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
-                Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
+            ZStack {
+                List(viewModel.comics) { comic in
+                    ComicRowView(comic: comic)
+                }
+                .navigationTitle("Marvel Comics")
+                .searchable(text: $viewModel.searchText)
+                .onAppear {
+                    viewModel.fetchComics()
+                }
+                .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
+                    Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
+                }
+                
+                if viewModel.noResultsFound {
+                    ContentUnavailableView.search
+                }
             }
         }
     }

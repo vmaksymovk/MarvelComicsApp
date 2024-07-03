@@ -4,6 +4,7 @@ import Combine
 class ComicsViewModel: ObservableObject {
     @Published var comics: [Comic] = []
     @Published var errorMessage: String?
+    @Published var noResultsFound: Bool = false
 
     private var apiClient = MarvelAPIClient()
     private var cancellables = Set<AnyCancellable>()
@@ -24,8 +25,11 @@ class ComicsViewModel: ObservableObject {
                 switch result {
                 case .success(let comics):
                     self?.comics = comics
+                    
+                    self?.noResultsFound = comics.isEmpty // Check if fetched comics are empty
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
+                    
                 }
             }
         }
@@ -37,8 +41,11 @@ class ComicsViewModel: ObservableObject {
                 switch result {
                 case .success(let comics):
                     self?.comics = comics
+                    
+                    self?.noResultsFound = comics.isEmpty // Check if search results are empty
                 case .failure(let error):
                     self?.errorMessage = error.localizedDescription
+                    
                 }
             }
         }
