@@ -8,32 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = ComicsViewModel()
-    
+    @State private var isSelectedView : Int = 1
     var body: some View {
-        NavigationView {
-            ZStack {
-                List(viewModel.comics) { comic in
-                    ComicRowView(comic: comic)
+        TabView(selection: $isSelectedView){
+            ListView()
+                .tabItem {
+                    Label("List", systemImage: "list.bullet.rectangle.portrait")
                 }
-                .navigationTitle("Marvel Comics")
-                .searchable(text: $viewModel.searchText)
-                .onAppear {
-                    viewModel.fetchComics()
-                }
-                .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
-                    Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
-                }
-                
-                if viewModel.noResultsFound {
-                    ContentUnavailableView.search
-                }
-            }
         }
     }
 }
-
-
 
 #Preview {
     ContentView()
