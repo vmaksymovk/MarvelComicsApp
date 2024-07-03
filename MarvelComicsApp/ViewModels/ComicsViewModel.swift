@@ -8,6 +8,9 @@
 import Foundation
 import Combine
 
+import Foundation
+import Combine
+
 class ComicsViewModel: ObservableObject {
     @Published var comics: [Comic] = []
     @Published var errorMessage: String?
@@ -27,4 +30,18 @@ class ComicsViewModel: ObservableObject {
             }
         }
     }
+
+    func searchComicsByTitle(title: String) {
+        apiClient.searchComicsByTitle(title: title) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let comics):
+                    self?.comics = comics
+                case .failure(let error):
+                    self?.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
 }
+

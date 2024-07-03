@@ -16,6 +16,7 @@
 		F533895C2C35596E00B8642D /* MarvelAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533895B2C35596E00B8642D /* MarvelAPIClient.swift */; };
 		F533895E2C3559A400B8642D /* ComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533895D2C3559A300B8642D /* ComicsViewModel.swift */; };
 		F53389602C3559F200B8642D /* ComicRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533895F2C3559F200B8642D /* ComicRowView.swift */; };
+		F53389632C355F9A00B8642D /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53389622C355F9A00B8642D /* SearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F533895D2C3559A300B8642D /* ComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewModel.swift; sourceTree = "<group>"; };
 		F533895F2C3559F200B8642D /* ComicRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRowView.swift; sourceTree = "<group>"; };
 		F53389612C355BDE00B8642D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F53389622C355F9A00B8642D /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				F53389452C35574A00B8642D /* ContentView.swift */,
 				F53389432C35574A00B8642D /* MarvelComicsAppApp.swift */,
 				F533895F2C3559F200B8642D /* ComicRowView.swift */,
+				F53389622C355F9A00B8642D /* SearchBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				F533895C2C35596E00B8642D /* MarvelAPIClient.swift in Sources */,
 				F53389442C35574A00B8642D /* MarvelComicsAppApp.swift in Sources */,
 				F53389582C3558E600B8642D /* Constants.swift in Sources */,
+				F53389632C355F9A00B8642D /* SearchBarView.swift in Sources */,
 				F53389602C3559F200B8642D /* ComicRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,22 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = ComicsViewModel()
-
+    @State private var searchText = ""
+    @State private var isKeyboardVisible = false
+    
     var body: some View {
         NavigationView {
-            List(viewModel.comics) { comic in
-                ComicRowView(comic: comic)
-            }
-            .navigationTitle("Marvel Comics")
-            .onAppear {
-                viewModel.fetchComics()
-            }
-            .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
-                Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
+            VStack {
+                SearchBarView(text: $searchText, onSearchButtonClicked: {
+                    viewModel.searchComicsByTitle(title: searchText)
+                })
+                List(viewModel.comics) { comic in
+                    ComicRowView(comic: comic)
+                }
+                .navigationTitle("Marvel Comics")
+                .onAppear {
+                    viewModel.fetchComics()
+                }
+                .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
+                    Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
+                }
             }
         }
     }
 }
+
+
 
 #Preview {
     ContentView()
