@@ -34,6 +34,3 @@ struct ComicRowView: View {
 }
 
 
-//#Preview {
-//    ComicRowView(comic: <#Comic#>)
-//}

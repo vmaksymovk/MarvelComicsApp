@@ -1,13 +1,3 @@
-//
-//  ComicsViewModel.swift
-//  MarvelComicsApp
-//
-//  Created by Влад on 7/3/24.
-//
-
-import Foundation
-import Combine
-
 import Foundation
 import Combine
 
@@ -17,6 +7,16 @@ class ComicsViewModel: ObservableObject {
 
     private var apiClient = MarvelAPIClient()
     private var cancellables = Set<AnyCancellable>()
+
+    @Published var searchText: String = "" {
+        didSet {
+            if !searchText.isEmpty {
+                searchComicsByTitle(title: searchText)
+            } else {
+                fetchComics()
+            }
+        }
+    }
 
     func fetchComics() {
         apiClient.fetchComics { [weak self] result in
@@ -44,4 +44,3 @@ class ComicsViewModel: ObservableObject {
         }
     }
 }
-
