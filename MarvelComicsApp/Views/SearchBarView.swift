@@ -37,9 +37,9 @@ struct SearchBarView: View {
                     }
                     
                     if viewModel.noResultsFound {
-                        VStack {
+                        VStack {//exclamationmark.magnifyingglass
                             Spacer()
-                            ContentUnavailableView.search
+                            ContentUnavailableView("", systemImage: "exclamationmark.magnifyingglass", description: Text("There is no comic book with that name in our library. Check the spelling and try again."))
                             Spacer()
                         }
                     }
