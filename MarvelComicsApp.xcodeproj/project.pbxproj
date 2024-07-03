@@ -11,6 +11,11 @@
 		F53389462C35574A00B8642D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53389452C35574A00B8642D /* ContentView.swift */; };
 		F53389482C35574C00B8642D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F53389472C35574C00B8642D /* Assets.xcassets */; };
 		F533894B2C35574C00B8642D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F533894A2C35574C00B8642D /* Preview Assets.xcassets */; };
+		F53389582C3558E600B8642D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53389572C3558E600B8642D /* Constants.swift */; };
+		F533895A2C35594700B8642D /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53389592C35594600B8642D /* Comic.swift */; };
+		F533895C2C35596E00B8642D /* MarvelAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533895B2C35596E00B8642D /* MarvelAPIClient.swift */; };
+		F533895E2C3559A400B8642D /* ComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533895D2C3559A300B8642D /* ComicsViewModel.swift */; };
+		F53389602C3559F200B8642D /* ComicRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533895F2C3559F200B8642D /* ComicRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,12 @@
 		F53389452C35574A00B8642D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F53389472C35574C00B8642D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F533894A2C35574C00B8642D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F53389572C3558E600B8642D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F53389592C35594600B8642D /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		F533895B2C35596E00B8642D /* MarvelAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIClient.swift; sourceTree = "<group>"; };
+		F533895D2C3559A300B8642D /* ComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsViewModel.swift; sourceTree = "<group>"; };
+		F533895F2C3559F200B8642D /* ComicRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicRowView.swift; sourceTree = "<group>"; };
+		F53389612C355BDE00B8642D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +62,12 @@
 		F53389422C35574A00B8642D /* MarvelComicsApp */ = {
 			isa = PBXGroup;
 			children = (
-				F53389432C35574A00B8642D /* MarvelComicsAppApp.swift */,
-				F53389452C35574A00B8642D /* ContentView.swift */,
+				F53389612C355BDE00B8642D /* Info.plist */,
+				F53389562C3557EE00B8642D /* Utilities */,
+				F53389552C3557DD00B8642D /* Services */,
+				F53389542C3557D200B8642D /* Views */,
+				F53389532C3557CC00B8642D /* ViewModels */,
+				F53389522C3557C000B8642D /* Models */,
 				F53389472C35574C00B8642D /* Assets.xcassets */,
 				F53389492C35574C00B8642D /* Preview Content */,
 			);
@@ -65,6 +80,48 @@
 				F533894A2C35574C00B8642D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F53389522C3557C000B8642D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F53389592C35594600B8642D /* Comic.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F53389532C3557CC00B8642D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F533895D2C3559A300B8642D /* ComicsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F53389542C3557D200B8642D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F53389452C35574A00B8642D /* ContentView.swift */,
+				F53389432C35574A00B8642D /* MarvelComicsAppApp.swift */,
+				F533895F2C3559F200B8642D /* ComicRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F53389552C3557DD00B8642D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F533895B2C35596E00B8642D /* MarvelAPIClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F53389562C3557EE00B8642D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F53389572C3558E600B8642D /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +194,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F533895E2C3559A400B8642D /* ComicsViewModel.swift in Sources */,
 				F53389462C35574A00B8642D /* ContentView.swift in Sources */,
+				F533895A2C35594700B8642D /* Comic.swift in Sources */,
+				F533895C2C35596E00B8642D /* MarvelAPIClient.swift in Sources */,
 				F53389442C35574A00B8642D /* MarvelComicsAppApp.swift in Sources */,
+				F53389582C3558E600B8642D /* Constants.swift in Sources */,
+				F53389602C3559F200B8642D /* ComicRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +337,7 @@
 				DEVELOPMENT_TEAM = YDM4QC6KDH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelComicsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +367,7 @@
 				DEVELOPMENT_TEAM = YDM4QC6KDH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelComicsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
