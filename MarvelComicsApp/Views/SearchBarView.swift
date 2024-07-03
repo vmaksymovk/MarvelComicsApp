@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct ListView: View {
+struct SearchBarView: View {
     @StateObject private var viewModel = ComicsViewModel()
     @State private var selectedComic: Comic? = nil
     
@@ -28,8 +28,7 @@ struct ListView: View {
                                 ComicDetailView(comic: comic)
                             }
                     }
-                    .navigationTitle("Marvel Comics")
-                    
+                    .searchable(text: $viewModel.searchText)
                     .onAppear {
                         viewModel.fetchComics()
                     }
@@ -37,12 +36,18 @@ struct ListView: View {
                         Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
                     }
                     
-                    
+                    if viewModel.noResultsFound {
+                        VStack {
+                            Spacer()
+                            ContentUnavailableView.search
+                            Spacer()
+                        }
+                    }
                 }
             }
         }
 }
 
 #Preview {
-    ListView()
+    SearchBarView()
 }

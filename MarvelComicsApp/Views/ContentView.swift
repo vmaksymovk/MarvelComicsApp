@@ -8,16 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isSelectedView : Int = 1
+    @State private var isSelectedView: Int = 1
+    
     var body: some View {
-        TabView(selection: $isSelectedView){
+        TabView(selection: $isSelectedView) {
             ListView()
                 .tabItem {
-                    Label("List", systemImage: "list.bullet.rectangle.portrait")
+                    Label("", systemImage: "house")
+                       
                 }
+                .tag(1)
+            
+            SearchBarView()
+                .tabItem {
+                    Label("", systemImage: "magnifyingglass")
+                        
+                }
+                .tag(2)
         }
     }
 }
+
+
 
 #Preview {
     ContentView()
