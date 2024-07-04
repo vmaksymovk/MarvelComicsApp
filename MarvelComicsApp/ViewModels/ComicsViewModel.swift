@@ -5,7 +5,7 @@ class ComicsViewModel: ObservableObject {
     @Published var comics: [Comic] = []
     @Published var errorMessage: String?
     @Published var noResultsFound: Bool = false
-
+    @Published var isLoading: Bool = false
     private var apiClient = MarvelAPIClient()
     private var cancellables = Set<AnyCancellable>()
 
@@ -15,6 +15,7 @@ class ComicsViewModel: ObservableObject {
                 searchComicsByTitle(title: searchText)
             } else {
                 comics = []
+                noResultsFound = false
             }
         }
     }
@@ -34,8 +35,10 @@ class ComicsViewModel: ObservableObject {
     }
 
     func searchComicsByTitle(title: String) {
+        isLoading = true // Start loading
         apiClient.searchComicsByTitle(title: title) { [weak self] result in
             DispatchQueue.main.async {
+                self?.isLoading = false // Stop loading
                 switch result {
                 case .success(let comics):
                     self?.comics = comics
