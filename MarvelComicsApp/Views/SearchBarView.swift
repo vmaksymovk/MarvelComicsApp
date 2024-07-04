@@ -38,8 +38,9 @@ struct SearchBarView: View {
                 
                 else if viewModel.isLoading {
                     VStack {
-                        ProgressView("Searching...")
-                            .padding()
+                        ProgressView()
+                            .progressViewStyle(RedProgressViewStyle())
+                            
                     }
                 }
                 

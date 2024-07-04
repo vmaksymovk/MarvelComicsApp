@@ -20,6 +20,7 @@
 		F53389672C35825400B8642D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53389662C35825400B8642D /* ListView.swift */; };
 		F53389692C35EE9200B8642D /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53389682C35EE9200B8642D /* SearchBarView.swift */; };
 		F533896B2C36076800B8642D /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533896A2C36076800B8642D /* SplashScreen.swift */; };
+		F533896E2C36C4C500B8642D /* RedProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F533896D2C36C4C500B8642D /* RedProgressViewStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		F53389662C35825400B8642D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		F53389682C35EE9200B8642D /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		F533896A2C36076800B8642D /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		F533896D2C36C4C500B8642D /* RedProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedProgressViewStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				F53389572C3558E600B8642D /* Constants.swift */,
+				F533896D2C36C4C500B8642D /* RedProgressViewStyle.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				F533896B2C36076800B8642D /* SplashScreen.swift in Sources */,
 				F53389442C35574A00B8642D /* MarvelComicsAppApp.swift in Sources */,
 				F53389582C3558E600B8642D /* Constants.swift in Sources */,
+				F533896E2C36C4C500B8642D /* RedProgressViewStyle.swift in Sources */,
 				F53389602C3559F200B8642D /* ComicRowView.swift in Sources */,
 				F53389672C35825400B8642D /* ListView.swift in Sources */,
 			);
