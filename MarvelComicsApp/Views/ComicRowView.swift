@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ComicRowView: View {
     let comic: Comic
-
+    
     var body: some View {
         HStack(spacing: 10) {
             AsyncImage(url: URL(string: "\(comic.thumbnail.path).\(comic.thumbnail.extension)")) { image in
@@ -23,7 +23,7 @@ struct ComicRowView: View {
                     .lineLimit(.max)
 
             }
-            .frame(maxWidth: .infinity, alignment: .leading) // Expand to fill available space
+            .frame(maxWidth: .infinity, alignment: .leading) 
             
             
                 

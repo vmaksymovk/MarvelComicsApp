@@ -1,47 +1,40 @@
-
 import SwiftUI
+
 
 struct ListView: View {
     @StateObject private var viewModel = ComicsViewModel()
-    @State private var selectedComic: Comic? = nil
     
     var body: some View {
-            NavigationStack {
-                ZStack {
-                    List(viewModel.comics, id: \.self) { comic in
+        NavigationStack {
+            ZStack {
+                List(viewModel.comics, id: \.self) { comic in
+                    NavigationLink(destination: ComicDetailView(comic: comic)) {
                         ComicRowView(comic: comic)
-                            .onTapGesture {
-                                selectedComic = comic
-                            }
-                            .navigationDestination(
-                                isPresented: Binding(
-                                    get: { selectedComic == comic },
-                                    set: { newValue in
-                                        if !newValue {
-                                            selectedComic = nil
-                                        } else {
-                                            selectedComic = comic
-                                        }
-                                    }
-                                )
-                            ) {
-                                ComicDetailView(comic: comic)
+                            .onAppear {
+                                if comic == viewModel.comics.last {
+                                    viewModel.fetchComics() 
+                                }
                             }
                     }
-                    .navigationTitle("Marvel Comics")
-                    
-                    .onAppear {
-                        viewModel.fetchComics()
-                    }
-                    .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
-                        Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
-                    }
-                    
-                    
+                }
+                .navigationTitle("Marvel Comics")
+                .onAppear {
+                    viewModel.fetchComics()
+                }
+                .alert(isPresented: .constant(viewModel.errorMessage != nil)) {
+                    Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? ""), dismissButton: .default(Text("OK")))
+                }
+                
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
                 }
             }
         }
+    }
 }
+
+
 
 #Preview {
     ListView()

@@ -4,11 +4,11 @@ import CryptoKit
 class MarvelAPIClient {
     private let baseURL = "https://gateway.marvel.com:443/v1/public/comics"
 
-    func fetchComics(completion: @escaping (Result<[Comic], Error>) -> Void) {
+    func fetchComics(offset: Int, completion: @escaping (Result<[Comic], Error>) -> Void) {
         let timestamp = String(Date().timeIntervalSince1970)
         let hash = MD5(string: "\(timestamp)\(Constants.privateKey)\(Constants.publicKey)")
 
-        let urlString = "\(baseURL)?apikey=\(Constants.publicKey)&ts=\(timestamp)&hash=\(hash)"
+        let urlString = "\(baseURL)?apikey=\(Constants.publicKey)&ts=\(timestamp)&hash=\(hash)&offset=\(offset)"
         guard let url = URL(string: urlString) else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
@@ -34,12 +34,12 @@ class MarvelAPIClient {
         }.resume()
     }
 
-    func searchComicsByTitle(title: String, completion: @escaping (Result<[Comic], Error>) -> Void) {
+    func searchComicsByTitle(title: String, offset: Int, completion: @escaping (Result<[Comic], Error>) -> Void) {
         let timestamp = String(Date().timeIntervalSince1970)
         let hash = MD5(string: "\(timestamp)\(Constants.privateKey)\(Constants.publicKey)")
 
         let encodedTitle = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let urlString = "\(baseURL)?apikey=\(Constants.publicKey)&ts=\(timestamp)&hash=\(hash)&titleStartsWith=\(encodedTitle)"
+        let urlString = "\(baseURL)?apikey=\(Constants.publicKey)&ts=\(timestamp)&hash=\(hash)&titleStartsWith=\(encodedTitle)&offset=\(offset)"
         
         guard let url = URL(string: urlString) else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
