@@ -25,8 +25,6 @@ struct ComicRowView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading) 
             
-            
-                
         }
         
     }

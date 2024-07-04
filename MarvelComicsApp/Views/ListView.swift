@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct ListView: View {
     @StateObject private var viewModel = ComicsViewModel()
     
@@ -8,11 +7,19 @@ struct ListView: View {
         NavigationStack {
             ZStack {
                 List(viewModel.comics, id: \.self) { comic in
-                    NavigationLink(destination: ComicDetailView(comic: comic)) {
+                    ZStack {
+                        NavigationLink(destination: ComicDetailView(comic: comic)) {
+                            EmptyView()
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .frame(width: 0)
+                        .opacity(0)
+                        
+
                         ComicRowView(comic: comic)
                             .onAppear {
                                 if comic == viewModel.comics.last {
-                                    viewModel.fetchComics() 
+                                    viewModel.fetchComics() // Load more comics when reaching the last one
                                 }
                             }
                     }
@@ -33,6 +40,7 @@ struct ListView: View {
         }
     }
 }
+
 
 
 
