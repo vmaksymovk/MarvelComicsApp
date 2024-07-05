@@ -2,9 +2,7 @@ import SwiftUI
 
 struct ComicDetailView: View {
     let comic: Comic
-    
-    @State private var showFullDescription = false
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -23,16 +21,13 @@ struct ComicDetailView: View {
                         Text(comic.title)
                             .font(.title)
                             .fontWeight(.bold)
-                        
+
                         if let description = comic.description {
-                            Text(description)
-                                .font(.body)
-                                .lineLimit(showFullDescription ? nil : 3)
-                                .onTapGesture {
-                                    withAnimation {
-                                        showFullDescription.toggle()
-                                    }
-                                }
+                            ScrollView { 
+                                Text(description)
+                                    .font(.body)
+                            }
+                            .frame(maxHeight: 200)
                         } else {
                             Text("No description available")
                                 .font(.body)
@@ -44,7 +39,7 @@ struct ComicDetailView: View {
             }
             .navigationTitle("Comic Details")
             .navigationBarTitleDisplayMode(.inline)
-            
+
             if let url = comic.urls.first(where: { $0.type == "detail" })?.url {
                 Button(action: {
                     if let link = URL(string: url) {
