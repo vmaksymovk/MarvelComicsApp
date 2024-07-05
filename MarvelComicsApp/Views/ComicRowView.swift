@@ -22,10 +22,27 @@ struct ComicRowView: View {
                     .font(.headline)
                     .lineLimit(.max)
 
+                if let writer = comic.creators.items.first(where: { $0.role.lowercased() == "writer" }) {
+                    Text("written by \(writer.name)")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                } else {
+                    Text("written by unknown")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+
+                if let description = comic.description {
+                    Text(description)
+                        .font(.body)
+                        .lineLimit(3) 
+                } else {
+                    Text("No description available")
+                        .font(.body)
+                        .foregroundColor(.secondary)
+                }
             }
-            .frame(maxWidth: .infinity, alignment: .leading) 
-            
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        
     }
 }

@@ -23,7 +23,7 @@ struct ComicDetailView: View {
                             .fontWeight(.bold)
 
                         if let description = comic.description {
-                            ScrollView { 
+                            ScrollView {
                                 Text(description)
                                     .font(.body)
                             }
