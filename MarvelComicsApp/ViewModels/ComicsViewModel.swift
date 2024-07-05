@@ -2,12 +2,13 @@ import Foundation
 import Combine
 
 class ComicsViewModel: ObservableObject {
-    @Published var comics: [Comic] = []
-    @Published var errorMessage: String?
+    @Published var comics: [Comic] = []  // Published array of comics to update views
+    @Published var errorMessage: String?  // Published error message for UI feedback
+    @Published var isLoading: Bool = false  // Published loading state for UI feedback
+    private var apiClient = MarvelAPIClient()  // Instance of API client for fetching data
+    private var cancellables = Set<AnyCancellable>()  // Set of Combine cancellables for managing async tasks
     @Published var noResultsFound: Bool = false
-    @Published var isLoading: Bool = false
-    private var apiClient = MarvelAPIClient()
-    private var cancellables = Set<AnyCancellable>()
+    
     
     private var currentPage = 0
     private var totalResults = 0
@@ -26,7 +27,7 @@ class ComicsViewModel: ObservableObject {
             }
         }
     }
-
+    // Fetches comics from API and updates view model
     func fetchComics() {
         guard !isFetching else { return }
         isFetching = true
@@ -45,7 +46,7 @@ class ComicsViewModel: ObservableObject {
             }
         }
     }
-
+    // Searches comics by title from API and updates view model
     func searchComicsByTitle(title: String) {
         guard !isFetching else { return }
         isFetching = true
